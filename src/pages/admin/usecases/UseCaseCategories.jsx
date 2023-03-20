@@ -17,6 +17,8 @@ import { AiFillDelete } from 'react-icons/ai'
 
 
 const UseCaseCategories = () => {
+  
+  const url=import.meta.env.VITE_REACT_APP_API_URL2
    
   const [items, setItems] = useState([]);
   const [postImage, setPostImage] = useState({ myFile: '' });
@@ -74,7 +76,7 @@ const [showDelete, setShowDelete] = useState(false);
 
   useEffect(() => {
     const fetchItems = async () => {
-      const response = await fetch('http://localhost:4000/api/casecategory');
+      const response = await fetch(`${url}casecategory`);
       const data = await response.json();
       setItems(data);
     };
@@ -91,7 +93,7 @@ const [showDelete, setShowDelete] = useState(false);
         },
         body: JSON.stringify(newPost),
       };
-      const response = await fetch('http://localhost:4000/api/casecategory', options);
+      const response = await fetch(`${url}casecategory`, options);
       const data = await response.json();
       
       setItems([...items, data.data]);
@@ -120,7 +122,7 @@ const [showDelete, setShowDelete] = useState(false);
         },
         body: JSON.stringify(newPost),
       };
-      const response = await fetch(`http://localhost:4000/api/casecategory/${id}`, options);
+      const response = await fetch(`${url}casecategory/${id}`, options);
       const data = await response.json();
       
       if(data){
@@ -158,7 +160,7 @@ const [showDelete, setShowDelete] = useState(false);
   };
   const handleDelete = async () => {
     try {
-    const response = await fetch(`http://localhost:4000/api/casecategory/${selectedItem._id}`,
+    const response = await fetch(`${url}casecategory/${selectedItem._id}`,
     {
     method: 'DELETE',
     }

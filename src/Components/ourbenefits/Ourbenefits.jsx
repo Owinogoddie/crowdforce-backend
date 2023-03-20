@@ -6,9 +6,10 @@ const Ourbenefits = () => {
 
   
 
+  const url=import.meta.env.VITE_REACT_APP_API_URL2
   useEffect(() => {
     const fetchItems = async () => {
-      const response = await fetch('http://localhost:4000/api/whyus');
+      const response = await fetch(`${url}whyus`);
       const data = await response.json();
       console.log(data.data)
       setItems(data.data);

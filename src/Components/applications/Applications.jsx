@@ -8,7 +8,7 @@ const Applications = () => {
    
   useEffect(() => {
     const fetchItems = async () => {
-      const response = await fetch('http://localhost:4000/api/expertise');
+      const response = await fetch(`${url}expertise`);
       const data = await response.json();
       setItems(data);
       console.log(items)

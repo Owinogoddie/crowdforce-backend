@@ -9,10 +9,11 @@ const PartnerBenefits = () => {
   const[items,setItems]=useState([])
   
 
+  const url=import.meta.env.VITE_REACT_APP_API_URL2
   
   useEffect(() => {
     const fetchItems = async () => {
-      const response = await fetch('http://localhost:4000/api/benefits');
+      const response = await fetch(`${url}benefits`);
       const data = await response.json();
       setItems(data);
 

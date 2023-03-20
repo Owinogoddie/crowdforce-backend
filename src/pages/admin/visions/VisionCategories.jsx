@@ -17,6 +17,8 @@ import { AiFillDelete } from 'react-icons/ai'
 
 
 const VisionCategories = () => {
+  
+  const url=import.meta.env.VITE_REACT_APP_API_URL2
    
   const [items, setItems] = useState([]);
   const [no, setNo] = useState(1);
@@ -69,7 +71,7 @@ const [showDelete, setShowDelete] = useState(false);
 
   useEffect(() => {
     const fetchItems = async () => {
-      const response = await fetch('http://localhost:4000/api/visioncats');
+      const response = await fetch(`${url}visioncats`);
       const data = await response.json();
       console.log(data)
       setItems(data);
@@ -89,7 +91,7 @@ const [showDelete, setShowDelete] = useState(false);
         },
         body: JSON.stringify(newPost),
       };
-      const response = await fetch('http://localhost:4000/api/visioncats', options);
+      const response = await fetch(`${url}visioncats`, options);
       const data = await response.json();
       console.log(data.data);
       setItems([...items, data.data]);
@@ -117,7 +119,7 @@ const [showDelete, setShowDelete] = useState(false);
         body: JSON.stringify(newPost),
       };
       console.log(newPost)
-      const response = await fetch(`http://localhost:4000/api/visioncats/${id}`, options);
+      const response = await fetch(`${url}visioncats/${id}`, options);
       const data = await response.json();
       
       Swal.fire({
@@ -154,7 +156,7 @@ const [showDelete, setShowDelete] = useState(false);
   };
   const handleDelete = async () => {
     try {
-    const response = await fetch(`http://localhost:4000/api/visioncats/${selectedItem._id}`,
+    const response = await fetch(`${url}visioncats/${selectedItem._id}`,
     {
     method: 'DELETE',
     }

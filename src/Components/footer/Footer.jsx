@@ -3,14 +3,16 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
 
+  const url=import.meta.env.VITE_REACT_APP_API_URL2
   const [categories,setCategories]=useState([])
 
   
   useEffect(() => {
     const fetchItems = async () => {
       
+      
 
-      const response2 = await fetch('http://localhost:4000/api/casecategory');
+      const response2 = await fetch(`${url}casecategory`);
       const data2 = await response2.json();
       setCategories(data2);
       // console.log(data2)

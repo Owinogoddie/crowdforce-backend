@@ -4,6 +4,7 @@ import './annotations.css'
 
 const AnnotationTypes = () => {
 
+  const url=import.meta.env.VITE_REACT_APP_API_URL2
 
 
     const [categories, setCategories] = useState([]);
@@ -14,7 +15,7 @@ const AnnotationTypes = () => {
   
     
     const filterData = async(id) => {
-      const response = await fetch(`http://localhost:4000/api/annotations/${id}`);
+      const response = await fetch(`${url}annotations/${id}`);
       const data = await response.json();
      
       
@@ -24,12 +25,12 @@ const AnnotationTypes = () => {
   
     useEffect(() => {
       const fetchItems = async () => {
-        const response = await fetch('http://localhost:4000/api/annotations');
+        const response = await fetch(`${url}annotations`);
         const data = await response.json();
         setItems(data);
         // console.log(data)
     
-        const response2 = await fetch('http://localhost:4000/api/annotations');
+        const response2 = await fetch(`${url}annotations`);
         const data2 = await response2.json();
         setItem(data2[0]);
       };

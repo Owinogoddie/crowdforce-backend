@@ -30,6 +30,8 @@ const AllExpertise = () => {
 const [showDelete, setShowDelete] = useState(false);
   
   const [selectedItem, setSelectedItem] = useState(null);
+  
+  const url=import.meta.env.VITE_REACT_APP_API_URL2
 
 
   const handleCloseModal = () => {
@@ -65,7 +67,7 @@ const [showDelete, setShowDelete] = useState(false);
 
   useEffect(() => {
     const fetchItems = async () => {
-      const response = await fetch('http://localhost:4000/api/expertise');
+      const response = await fetch(`${url}expertise`);
       const data = await response.json();
       setItems(data);
     };
@@ -82,7 +84,7 @@ const [showDelete, setShowDelete] = useState(false);
         },
         body: JSON.stringify(newPost),
       };
-      const response = await fetch('http://localhost:4000/api/expertise', options);
+      const response = await fetch(`${url}expertise`, options);
       const data = await response.json();
       console.log(data.data);
       setItems([...items, data.data]);
@@ -107,7 +109,7 @@ const [showDelete, setShowDelete] = useState(false);
         body: JSON.stringify(newPost),
       };
       console.log(newPost)
-      const response = await fetch(`http://localhost:4000/api/expertise/${id}`, options);
+      const response = await fetch(`${url}expertise/${id}`, options);
       const data = await response.json();
       
       Swal.fire({
@@ -145,7 +147,7 @@ const [showDelete, setShowDelete] = useState(false);
   };
   const handleDelete = async () => {
     try {
-    const response = await fetch(`http://localhost:4000/api/expertise/${selectedItem._id}`,
+    const response = await fetch(`${url}expertise/${selectedItem._id}`,
     {
     method: 'DELETE',
     }

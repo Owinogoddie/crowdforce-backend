@@ -67,15 +67,16 @@ const [showDelete, setShowDelete] = useState(false);
     };
     
     
+    const url=import.meta.env.VITE_REACT_APP_API_URL2
 
   useEffect(() => {
     const fetchItems = async () => {
-      const response = await fetch('http://localhost:4000/api/benefits');
+      const response = await fetch(`${url}benefits`);
       const data = await response.json();
       setItems(data);
       console.log(data)
 
-      const response2 = await fetch('http://localhost:4000/api/casecategory');
+      const response2 = await fetch(`${url}casecategory`);
       const data2 = await response2.json();
       setCategories(data2);
       console.log(data2)
@@ -95,7 +96,7 @@ const [showDelete, setShowDelete] = useState(false);
         },
         body: JSON.stringify(newPost),
       };
-      const response = await fetch('http://localhost:4000/api/benefits', options);
+      const response = await fetch(`${url}benefits`, options);
       const data = await response.json();
       console.log(data.data);
       setItems([...items, data.data]);
@@ -123,7 +124,7 @@ const [showDelete, setShowDelete] = useState(false);
         body: JSON.stringify(newPost),
       };
       console.log(newPost)
-      const response = await fetch(`http://localhost:4000/api/usecases/${id}`, options);
+      const response = await fetch(`${url}usecases/${id}`, options);
       const data = await response.json();
       
       Swal.fire({
@@ -161,7 +162,7 @@ const [showDelete, setShowDelete] = useState(false);
   };
   const handleDelete = async () => {
     try {
-    const response = await fetch(`http://localhost:4000/api/benefits/${selectedItem._id}`,
+    const response = await fetch(`${url}benefits/${selectedItem._id}`,
     {
     method: 'DELETE',
     }

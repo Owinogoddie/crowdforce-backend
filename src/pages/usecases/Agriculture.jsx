@@ -13,11 +13,13 @@ import img from'../../assets/workforce-management-platform.jpg'
 const Agriculture = () => {
   const [items, setItems] = useState([]);
   const[categories,setCategories]=useState([])
+  
+  const url=import.meta.env.VITE_REACT_APP_API_URL2
 
   const { category, setCategory } = useContext(CategoryContext) ;
   useEffect(() => {
     const fetchItems = async () => {
-      const response = await fetch( `http://localhost:4000/api/usecases/64183be4bd2c7482288c42db`);
+      const response = await fetch( `${url}usecases/64183be4bd2c7482288c42db`);
       const data = await response.json();
       setItems(data);
       console.log(category)

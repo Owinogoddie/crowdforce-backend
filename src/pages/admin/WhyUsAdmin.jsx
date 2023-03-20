@@ -17,6 +17,8 @@ import { AiFillDelete } from 'react-icons/ai'
 
 
 const WhyUsAdmin = () => {
+  
+  const url=import.meta.env.VITE_REACT_APP_API_URL2
    
   const [items, setItems] = useState([]);
   const [no, setNo] = useState(1);
@@ -69,7 +71,7 @@ const [showDelete, setShowDelete] = useState(false);
 
   useEffect(() => {
     const fetchItems = async () => {
-      const response = await fetch('http://localhost:4000/api/whyus');
+      const response = await fetch(`${url}whyus`);
       const data = await response.json();
       console.log(data.data)
       setItems(data.data);
@@ -89,7 +91,7 @@ const [showDelete, setShowDelete] = useState(false);
         },
         body: JSON.stringify(newPost),
       };
-      const response = await fetch('http://localhost:4000/api/whyus', options);
+      const response = await fetch(`${url}whyus`, options);
       const data = await response.json();
       console.log(data.data);
       setItems([...items, data.data]);
@@ -117,7 +119,7 @@ const [showDelete, setShowDelete] = useState(false);
         body: JSON.stringify(newPost),
       };
       console.log(newPost)
-      const response = await fetch(`http://localhost:4000/api/whyus/${id}`, options);
+      const response = await fetch(`${url}whyus/${id}`, options);
       const data = await response.json();
       
       Swal.fire({
@@ -155,7 +157,7 @@ const [showDelete, setShowDelete] = useState(false);
   };
   const handleDelete = async () => {
     try {
-    const response = await fetch(`http://localhost:4000/api/whyus/${selectedItem._id}`,
+    const response = await fetch(`${url}whyus/${selectedItem._id}`,
     {
     method: 'DELETE',
     }

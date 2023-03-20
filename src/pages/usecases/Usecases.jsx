@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import './usecases.css'
 
 const Usecases = () => {
+  
+  const url=import.meta.env.VITE_REACT_APP_API_URL2
 
   const[items,setItems]=useState([])
   const[categories,setCategories]=useState([])
@@ -39,11 +41,11 @@ const handleLink=(category)=>{
    
   useEffect(() => {
     const fetchItems = async () => {
-      const response = await fetch('http://localhost:4000/api/usecases');
+      const response = await fetch(`${url}usecases`);
       const data = await response.json();
       setItems(data);
 
-      const response2 = await fetch('http://localhost:4000/api/casecategory');
+      const response2 = await fetch(`${url}casecategory`);
       const data2 = await response2.json();
       setCategories(data2);
       
@@ -57,7 +59,7 @@ const handleLink=(category)=>{
   }, []);
 
   const filterData = async(id) => {
-    const response = await fetch(`http://localhost:4000/api/usecases/${id}`);
+    const response = await fetch(`${url}usecases/${id}`);
     const data = await response.json();
     
     setItems(data)
@@ -65,7 +67,7 @@ const handleLink=(category)=>{
    
 
   const handleAll=async()=>{
-    const response = await fetch('http://localhost:4000/api/usecases');
+    const response = await fetch(`${url}usecases`);
     const data = await response.json();
     setItems(data);
     

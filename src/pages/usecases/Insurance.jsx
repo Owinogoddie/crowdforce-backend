@@ -14,10 +14,11 @@ const Insurance = () => {
   const [items, setItems] = useState([]);
   const[categories,setCategories]=useState([])
 
+  const url=import.meta.env.VITE_REACT_APP_API_URL2
    
   useEffect(() => {
     const fetchItems = async () => {
-      const response = await fetch('http://localhost:4000/api/usecases/641729e69c8636ff40017d92');
+      const response = await fetch(`${url}usecases/641729e69c8636ff40017d92`);
       const data = await response.json();
       setItems(data);
 

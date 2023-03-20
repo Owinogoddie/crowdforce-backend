@@ -11,6 +11,8 @@ import './single.css'
 import img from'../../assets/workforce-management-platform.jpg'
 
 const Aerial = () => {
+  
+  const url=import.meta.env.VITE_REACT_APP_API_URL2
   const { category, setCategory } = useContext(CategoryContext);
   const [items, setItems] = useState([]);
   const[categories,setCategories]=useState([])
@@ -19,7 +21,7 @@ const Aerial = () => {
   // const { category, setCategory } = useContext(CategoryContext) useContext;
   useEffect(() => {
     const fetchItems = async () => {
-      const response = await fetch( `http://localhost:4000/api/usecases/6418367bbd2c7482288c4253`);
+      const response = await fetch( `${url}usecases/6418367bbd2c7482288c4253`);
       const data = await response.json();
       setItems(data);
 

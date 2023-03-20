@@ -12,9 +12,10 @@ const VisionTypes = () => {
   const [items, setItems] = useState([]);
 
 
+  const url=import.meta.env.VITE_REACT_APP_API_URL2
   
   const filterData = async(id) => {
-    const response = await fetch(`http://localhost:4000/api/allvisions/${id}`);
+    const response = await fetch(`${url}allvisions/${id}`);
     const data = await response.json();
     console.log(data)
     
@@ -24,12 +25,12 @@ const VisionTypes = () => {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const response = await fetch('http://localhost:4000/api/allvisions');
+      const response = await fetch(`${url}allvisions`);
       const data = await response.json();
       setItems(data);
       // console.log(data)
   
-      const response2 = await fetch('http://localhost:4000/api/allvisions');
+      const response2 = await fetch(`${url}allvisions`);
       const data2 = await response2.json();
       setItem(data2[0]);
     };
