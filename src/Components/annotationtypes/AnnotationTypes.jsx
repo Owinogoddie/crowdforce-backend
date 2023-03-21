@@ -68,14 +68,14 @@ const AnnotationTypes = () => {
   <ul class="main-hs-tabs__nav"> 
 
   {
-    items.map((item)=>(
+   items && items.map((item)=>(
       <li><a  class="main-hs-tabs__navitem main-hs-tabs__navitem--active" onClick={() => filterData(item._id)}>
        
       <span class="list-header-icon">
         <img src="images/icons-v1-accelerated-annotation-thin-01.svg" alt="Accelerated Annotation" width="400" height="400"/>
       </span>  
       
-      <h3>{item.title}</h3>
+      <h3>{item? item.title :""}</h3>
       </a>
       </li>
     ))
@@ -95,14 +95,14 @@ const AnnotationTypes = () => {
           
             <h3>
               <a href="accelerated-annotation.html">
-                 {item.title}
+                 { item? item.title :""}
               </a>
             </h3>
             
             
         </div>
         <div class="tabber-summary">
-          <p>{item.description}</p>
+          <p>{item? item.description :""}</p>
         </div>
         
         

@@ -59,7 +59,7 @@ const Sidebar = () => {
             </Link>
              </li>
           <li class="sidebar-list-item">
-            <Link to="/admin/our-advantages">
+            <Link >
               <span class="material-icons-outlined"><FaBullseye/></span> Why us
             </Link>
           </li>
